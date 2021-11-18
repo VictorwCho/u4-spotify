@@ -25,8 +25,8 @@
       }
     },
     {
-      "name": "artists",
-      "description": "Access to the users favourite artists"
+      "name": "artist",
+      "description": "Operations about artist"
     },
     {
       "name": "user",
@@ -42,7 +42,7 @@
     "/artist": {
       "post": {
         "tags": [
-          "artists"
+          "artist"
         ],
         "summary": "Add an artist",
         "description": "This can only be done by the logged in user.",
@@ -355,7 +355,7 @@
     }
   },
   "definitions": {
-    "Artists": {
+    "Artist": {
       "type": "object",
       "properties": {
         "id": {
