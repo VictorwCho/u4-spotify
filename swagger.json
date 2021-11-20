@@ -18,15 +18,27 @@
   "tags": [
     {
       "name": "Spotify",
-      "description": "Everything about your Songs",
+      "description": "Everything about your account",
       "externalDocs": {
         "description": "Find out more",
-        "url": "http://swagger.io"
+        "url": "https://accounts.spotify.com/"
       }
     },
     {
       "name": "artist",
       "description": "Operations about artist"
+    },
+    {
+      "name": "playList",
+      "description": "Operations about playList"
+    },
+    {
+      "name": "genre",
+      "description": "Operations about genre"
+    },
+    {
+      "name": "album",
+      "description": "Operations about album"
     },
     {
       "name": "user",
@@ -39,6 +51,66 @@
   ],
   "paths":
   {
+    "/callback": {
+      "get": {
+        "tags": [
+          "Spotify"
+        ],
+        "summary": "checks auth code and requests refresh & access tokens",
+        "description": "This before allowed access to account.",
+        "operationId": "getCallback",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": " creates a call back to check the auth code and requests refresh and access tokens",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Spotify"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/refresh_token": {
+      "get": {
+        "tags": [
+          "Spotify"
+        ],
+        "summary": "Gets refresh token after authorization is confirmed",
+        "description": "This before allowed access to account.",
+        "operationId": "getCallback",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Gets a refresh token after authorization has been confirmed this will help with SSO",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Spotify"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/artist": {
       "post": {
         "tags": [
@@ -69,6 +141,96 @@
         }
       }
     },
+    "/playList": {
+      "post": {
+        "tags": [
+          "playList"
+        ],
+        "summary": "Add an playList",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "addPlayList",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add playList object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayList"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/genre": {
+      "post": {
+        "tags": [
+          "genre"
+        ],
+        "summary": "Add an genre",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "addGenre",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add genre object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Genre"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/album": {
+      "post": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Add an album",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "addAlbum",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add album object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Album"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/user": {
       "post": {
         "tags": [
@@ -89,70 +251,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/User"
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/user/createWithArray": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Creates list of users with given input array",
-        "operationId": "createUsersWithArrayInput",
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "List of user object",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "successful operation"
-          }
-        }
-      }
-    },
-    "/user/createWithList": {
-      "post": {
-        "tags": [
-          "user"
-        ],
-        "summary": "Creates list of users with given input array",
-        "operationId": "createUsersWithListInput",
-        "produces": [
-          "application/json",
-          "application/xml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "List of user object",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/User"
-              }
             }
           }
         ],
@@ -355,6 +453,23 @@
     }
   },
   "definitions": {
+    "Spotify": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        },
+        "grant_type": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Spotify"
+      }
+    },
     "Artist": {
       "type": "object",
       "properties": {
@@ -375,6 +490,49 @@
       },
       "xml": {
         "name": "Artists"
+      }
+    },
+    "PlayList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "PlayList"
+      }
+    },
+    "Genre": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Genre"
+      }
+    },
+    "Album": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Album"
       }
     },
     "User": {
