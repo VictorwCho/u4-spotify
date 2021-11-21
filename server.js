@@ -10,12 +10,6 @@ const client_id = '9e55836a318b4d8f82f19477b0f603ed';
 const client_secret = '2e728ff7871c48219b7b9d06e1e8e026';
 const redirect_uri = 'http://localhost:8888/callback/';
 const stateKey = 'spotify_auth_state';
-let requestIncrement = {
-  get: 0,
-  post: 0,
-  delete: 0,
-  patch: 0
-}
 
 //creates an sql conneciton
 const connection = mysql.createConnection({
@@ -43,8 +37,7 @@ app.use(express.static(__dirname + '/public'))
 
 // adds users into the database.
 app.post('/user', (req, res) => {
-  requestIncrement.post = requestIncrement.post + 1;
-  console.log(requestIncrement);
+  let count = 1;
   let body = '';
 
   req.on('data', function (chunk) {
@@ -53,9 +46,7 @@ app.post('/user', (req, res) => {
     }
   });
   req.on('end', function () {
-    // const sqlQuery = `INSERT INTO users (display_name, email, id, type)
-    // VALUES ('${JSON.parse(body).display_name}', '${JSON.parse(body).email}', '${JSON.parse(body).id}', '${JSON.parse(body).type}')`;
-    let sqlQuery = 'CREATE TABLE IF NOT EXISTS users (display_name VARCHAR(255),email VARCHAR(255),id VARCHAR(255),type VARCHAR(255), UNIQUE (email))';
+    const sqlQuery = 'CREATE TABLE IF NOT EXISTS users (display_name VARCHAR(255),email VARCHAR(255),id VARCHAR(255),type VARCHAR(255), UNIQUE (email))';
     connection.query(sqlQuery, (sqlErr, sqlRes) => {
       if (sqlErr) {
         res.status(404).send('Error in the SQL Request');
@@ -74,8 +65,7 @@ app.post('/user', (req, res) => {
     })
   });
   res.status(200).send({
-    body: requestIncrement,
-  });
+    body: count});
 });
 
 // endpoint to intiate the log in procedure to redirect the user to a spotify login widget.
@@ -100,7 +90,6 @@ app.get('/login', (req, res) => {
 app.get('/callback', (req, res) => {
   // The app requests refresh and access tokens
   // After checking that state parameter
-
   let code = req.query.code || null;
   let state = req.query.state || null;
   let storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -163,6 +152,7 @@ app.get('/callback', (req, res) => {
 
 //  Gets a refresh token after authorization has been confirmed this will help with SSO
 app.get('/refresh_token', (req, res) => {
+  let count = 1;
   let refresh_token = req.query.refresh_token;
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -178,6 +168,7 @@ app.get('/refresh_token', (req, res) => {
       let access_token = body.access_token;
       res.send({
         access_token: access_token,
+        body: count
       });
     }
   });

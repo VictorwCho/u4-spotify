@@ -7,6 +7,13 @@
   </head>
 
   <body>
+    <div class="request-inputs">
+      <h2 id='request-post' ></h2>
+      <h2 id='request-get' ></h2>
+      <h2 id='request-delete' ></h2>
+      <h2 id='request-patch' ></h2>
+    </div>
+    
     <div class="container">
       <div id="login">
         <h1>Team U4 Spotify Application</h1>
@@ -19,8 +26,9 @@
         </div>
         <div class='oauth-buttons'>
           <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
-          <button class='btn btn-default' id="button-continue">Confirm & Continue</button>
+          <button class='btn btn-default' id="button-continue" onclick="window.location.href='homepage.html'">Confirm & Continue</button>
         </div>
+        <a href="https://accounts.spotify.com/en/logout " id='login-position' class="btn btn-primary">Log Out with Spotify</a>
 
       </div>
     </div>

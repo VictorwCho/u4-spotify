@@ -1,3 +1,10 @@
+let requestIncrement = {
+  get: 0,
+  post: 0,
+  delete: 0,
+  patch: 0
+};
+
 (function() {
 
   /**
@@ -23,7 +30,6 @@
       oauthPlaceholder = document.getElementById('oauth');
 
   let params = getHashParams();
-
   let access_token = params.access_token,
       refresh_token = params.refresh_token,
       error = params.error;
@@ -58,12 +64,15 @@
               xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
               xhttp.send(JSON.stringify(paramJson));
               xhttp.onreadystatechange = () => {
-                if (this.readyState == 4 && this.status == 200) {
-                  console.log('all good');
-                }
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                  const count = JSON.parse(xhttp.response);
+                  requestIncrement.post = requestIncrement.post + count.body;
+                  document.getElementById('request-post').innerHTML='POST: ' + requestIncrement.post;
+                  console.log(requestIncrement.post);
+                };
               }
             } catch(err) {
-              console.log('not good');
+              console.log('An Error has occured: ' + err);
             };
 
 
@@ -85,9 +94,13 @@
         }
       }).done(function(data) {
         access_token = data.access_token;
+        requestIncrement.get = requestIncrement.get + data.body;
+        document.getElementById('request-get').innerHTML='GET: ' + requestIncrement.get;
+        // console.log(requestIncrement.get);
         oauthPlaceholder.innerHTML = oauthTemplate({
           access_token: access_token,
           refresh_token: refresh_token
+          
         });
       });
     }, false);
