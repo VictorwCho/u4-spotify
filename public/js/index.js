@@ -1,24 +1,3 @@
-// const xhttp = new XMLHttpRequest();
-// const endPointRoot = 'http://localhost:8888';
-// const POST = 'POST';
-// const GET = 'GET';
-// const PATCH = 'PATCH';
-// const DELETE = 'DELETE';
-
-
-// function post() {
-//     console.log('A wild post have been called');
-//     let resource = '/login';
-//     const url = endPointRoot + resource;
-//     xhttp.open('POST', url, true);
-//     xhttp.send();
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//           document.getElementById("get_info_div").innerHTML =
-//             this.responseText;
-//         };
-//       };
-// }
 (function() {
 
   /**
@@ -26,8 +5,8 @@
    * @return Object
    */
   function getHashParams() {
-    var hashParams = {};
-    var e, r = /([^&;=]+)=?([^&;]*)/g,
+    let hashParams = {};
+    let e, r = /([^&;=]+)=?([^&;]*)/g,
         q = window.location.hash.substring(1);
     while ( e = r.exec(q)) {
        hashParams[e[1]] = decodeURIComponent(e[2]);
@@ -35,17 +14,17 @@
     return hashParams;
   }
 
-  var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+  let userProfileSource = document.getElementById('user-profile-template').innerHTML,
       userProfileTemplate = Handlebars.compile(userProfileSource),
       userProfilePlaceholder = document.getElementById('user-profile');
 
-  var oauthSource = document.getElementById('oauth-template').innerHTML,
+  let oauthSource = document.getElementById('oauth-template').innerHTML,
       oauthTemplate = Handlebars.compile(oauthSource),
       oauthPlaceholder = document.getElementById('oauth');
 
-  var params = getHashParams();
+  let params = getHashParams();
 
-  var access_token = params.access_token,
+  let access_token = params.access_token,
       refresh_token = params.refresh_token,
       error = params.error;
 
@@ -66,6 +45,27 @@
           },
           success: function(response) {
             userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+            // console.log(response);
+            let paramJson = {
+              display_name: response.display_name,
+              email: response.email,
+              id: response.id,
+              type: response.type
+            }
+            try {
+              const xhttp = new XMLHttpRequest();
+              xhttp.open('POST', '/user', true);
+              xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+              xhttp.send(JSON.stringify(paramJson));
+              xhttp.onreadystatechange = () => {
+                if (this.readyState == 4 && this.status == 200) {
+                  console.log('all good');
+                }
+              }
+            } catch(err) {
+              console.log('not good');
+            };
+
 
             $('#login').hide();
             $('#loggedin').show();
