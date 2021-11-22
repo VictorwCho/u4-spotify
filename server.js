@@ -8,15 +8,16 @@ const cookieParser = require('cookie-parser');
 const request = require('request');
 const client_id = '9e55836a318b4d8f82f19477b0f603ed';
 const client_secret = '2e728ff7871c48219b7b9d06e1e8e026';
-const redirect_uri = 'http://localhost:8888/callback/';
+// const redirect_uri = `http://localhost:${PORT}/callback/`;
+const redirect_uri = 'https://victorcho.ca/COMP4537/termproject/spotify/V1/index.html/callback/';
 const stateKey = 'spotify_auth_state';
 
 //creates an sql conneciton
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'spotify',
+  host: 'us-cdbr-east-04.cleardb.com',
+  user: 'b75dee2cacf594',
+  password: '7ff4a688',
+  database: 'heroku_5e67acb080746f5',
 });
 
 // Creates a random string to be sent to spotify for an auth code exchange.
