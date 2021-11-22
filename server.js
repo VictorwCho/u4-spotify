@@ -31,10 +31,10 @@ const generateRandomString = (length) => {
   return text;
 };
 
-// connects express and index.html.
-app.use(express.static(__dirname + '/public'))
-.use(cors())
-.use(cookieParser());
+// // connects express and index.html.
+// app.use(express.static(__dirname + '/public'))
+// .use(cors())
+// .use(cookieParser());
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
