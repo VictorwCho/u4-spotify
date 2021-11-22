@@ -9,7 +9,7 @@ const request = require('request');
 const client_id = '9e55836a318b4d8f82f19477b0f603ed';
 const client_secret = '2e728ff7871c48219b7b9d06e1e8e026';
 // const redirect_uri = `http://localhost:${PORT}/callback/`;
-const redirect_uri = 'https://victorcho.ca/COMP4537/termproject/spotify/V1/';
+const redirect_uri = 'https://victorcho.ca/COMP4537/termproject/spotify/V1/callback/';
 const stateKey = 'spotify_auth_state';
 
 //creates an sql conneciton
@@ -44,7 +44,7 @@ app.use(function (req, res, next) {
 });
 
 app.get("/", (req, res) => {
-  res.send("CONNECTED!");
+  res.send("OK!");
 });
 
 // adds users into the database.
