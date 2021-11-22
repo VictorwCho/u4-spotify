@@ -44,7 +44,7 @@ app.use(function (req, res, next) {
 });
 
 app.get("/", (req, res) => {
-  res.json({message: "OK"});
+  res.send("CONNECTED!");
 });
 
 // adds users into the database.
