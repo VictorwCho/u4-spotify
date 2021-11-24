@@ -85,7 +85,6 @@ if (access_token && (state == null || state !== storedState)) {
                 }
             });
         } else {
-            // window.location.href='http://localhost:8888';
             // render initial screen
             $('#login').show();
             $('#loggedin').hide();
