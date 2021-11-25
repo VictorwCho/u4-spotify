@@ -50,6 +50,24 @@ app.post('/user', (req, res) => {
     body: count});
 });
 
+
+app.get('/callback/playlist/userId', ( req, res ) => {
+  console.log('userId API was called');
+  let count = + 1;
+  connection.query('SELECT * FROM users', (err, result) => {
+    if (err) {
+      res.status(404).send('Error in request');
+      throw err;
+    }
+    const body = {
+      count: count,
+      result: result[0].id,
+    }
+    res.status(200).send(body);
+  })
+});
+
+
 app.listen(PORT, (err) => {
     if (err) {
         throw err;
