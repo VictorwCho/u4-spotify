@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 8888;
 const app = express();
 const cors = require('cors');
 
-
 //creates an sql conneciton
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -14,8 +13,7 @@ const connection = mysql.createConnection({
 });
 
 // connects express and index.html.
-app.use(express.static(__dirname + '/public'))
-.use(cors())
+app.use(express.static(__dirname + '/public')).use(cors());
 
 // adds users into the database.
 app.post('/user', (req, res) => {
@@ -37,22 +35,25 @@ app.post('/user', (req, res) => {
       console.log(sqlRes.message);
     });
 
-    const sqlQuery1 = `INSERT IGNORE INTO users (display_name, email, id, type) VALUES ('${JSON.parse(body).display_name}', '${JSON.parse(body).email}', '${JSON.parse(body).id}', '${JSON.parse(body).type}')`;
+    const sqlQuery1 = `INSERT IGNORE INTO users (display_name, email, id, type) VALUES ('${JSON.parse(body).display_name}', '${JSON.parse(body).email}', '${
+      JSON.parse(body).id
+    }', '${JSON.parse(body).type}')`;
     connection.query(sqlQuery1, (sqlErr, sqlRes) => {
       if (sqlErr) {
         res.status(404).send('Error in the SQL Request');
         throw err;
       }
       console.log(sqlRes.message);
-    })
+    });
   });
   res.status(200).send({
-    body: count});
+    body: count,
+  });
 });
 
 app.listen(PORT, (err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Listening on port', PORT);
+  if (err) {
+    throw err;
+  }
+  console.log('Listening on port', PORT);
 });
