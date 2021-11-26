@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+#login, #loggedin {
+    justify-content: none;
+  }
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 500px;
+}
+
+#login-position {
+    display: flex;
+    justify-content: center;
+}
+
+#user-profile-header {
+    display: flex;
+    justify-content: center;
+}
+
+.oauth-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.request-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 10vh;
+    margin-top: 10vh;
+    margin-right: 10vh;
+
+}
