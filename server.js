@@ -4,6 +4,13 @@ const PORT = process.env.PORT || 8888;
 const app = express();
 const cors = require('cors');
 
+// //creates an sql conneciton
+// const connection = mysql.createConnection({
+//   host: 'us-cdbr-east-04.cleardb.com',
+//   user: 'b75dee2cacf594',
+//   password: '7ff4a688',
+//   database: 'heroku_5e67acb080746f5',
+// });
 
 //creates an sql conneciton
 const connection = mysql.createConnection({
@@ -15,7 +22,7 @@ const connection = mysql.createConnection({
 
 // connects express and index.html.
 app.use(express.static(__dirname + '/public'))
-.use(cors())
+.use(cors());
 
 // adds users into the database.
 app.post('/user', (req, res) => {
