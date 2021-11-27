@@ -6,6 +6,14 @@
     margin-left: -100px;
 }
 
+.mid_centered{
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
+
 .right_upper_centered {
     position: fixed;
     top: 10%;

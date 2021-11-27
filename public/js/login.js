@@ -15,7 +15,7 @@ document.getElementById('login-button').addEventListener('click', function() {
     // let redirect_uri = 'https://victorcho.ca/COMP4537/termproject/spotify/V1/'; // Your redirect uri
     let state = generateRandomString(16);
     localStorage.setItem(stateKey, state);
-    let scope = 'user-read-private user-read-email';
+    let scope = 'user-read-private user-read-email playlist-modify-public';
     let url = 'https://accounts.spotify.com/authorize';
     url += '?response_type=token';
     url += '&client_id=' + encodeURIComponent(client_id);
