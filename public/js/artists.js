@@ -19,7 +19,7 @@ function searchArtist() {
       const response = xhttp.response;
       // console.log(JSON.stringify(response));
       console.log(JSON.parse(response));
-      objectSearched = JSON.parse(response);
+      let objectSearched = JSON.parse(response);
       console.log(objectSearched.artists.items[0].name);
 
       for (let i = 0; i < objectSearched.artists.items.length; i++) {
@@ -33,14 +33,14 @@ function searchArtist() {
           artistContainer.innerHTML += 'SORRY NO IMAGE';
         }
 
-        artistContainer.innerHTML += `<br>` + 'NAME: ' + objectSearched.artists.items[i].name;
+        artistContainer.innerHTML += `<br>` + `NAME: ${objectSearched.artists.items[i].name}`;
         artistContainer.innerHTML += `<br>` + 'GENRES: ' + objectSearched.artists.items[i].genres;
         artistContainer.innerHTML += `<br>` + 'FOLLOWERS: ' + objectSearched.artists.items[i].followers.total;
         artistContainer.innerHTML += `<br>` + 'POPULARITY: ' + objectSearched.artists.items[i].popularity;
         artistContainer.innerHTML += `<br>` + 'LINK: ' + objectSearched.artists.items[i].href;
         artistContainer.innerHTML += `<br>` + 'ID: ' + objectSearched.artists.items[i].id;
         artistContainer.innerHTML +=
-          `<br>` + `<a href = " ${objectSearched.artists.items[i].external_urls.spotify}">Listen to ${objectSearched.artists.items[i].name}</a>`;
+          `<br>` + `<a id = "anchors" href = " ${objectSearched.artists.items[i].external_urls.spotify}">Listen to ${objectSearched.artists.items[i].name}</a>`;
         artistContainer.innerHTML += `<br><br>`;
       }
     }

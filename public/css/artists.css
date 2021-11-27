@@ -65,3 +65,18 @@ html {
   font-family: Inter, -apple-system, system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
   padding-left: 115px;
 }
+#artist_container {
+  position: static;
+  justify-content: center;
+  margin-top: 15%;
+  margin-left: 40%;
+}
+#green {
+  color: greenyellow;
+}
+#white {
+  color: white;
+}
+#anchors {
+  color: rgb(13, 220, 235);
+}
