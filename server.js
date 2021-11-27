@@ -51,6 +51,51 @@ app.post('/user', (req, res) => {
 });
 
 
+// adds users into the database.
+app.post('/callback/playlist/addplaylist', (req, res) => {
+  let count = 1;
+  let body = '';
+
+  req.on('data', function (chunk) {
+    if (chunk != null) {
+      body += chunk;
+      console.log(body);
+    }
+  });
+
+  req.on('end', function () {
+    let data = JSON.parse(body);
+    // console.log(blah);
+    let array = [];
+    data.forEach(element => {
+      array.push(Object.values(element));
+    })
+    console.log(array);
+
+    // let bodyData = Object.entries(blah);
+    // console.log(bodyData);
+    const sqlQuery = 'CREATE TABLE IF NOT EXISTS playlists (playlistId VARCHAR(255), name VARCHAR(255), description VARCHAR(255), owner VARCHAR(255), UNIQUE (playlistId))';
+    connection.query(sqlQuery, (sqlErr, sqlRes) => {
+      if (sqlErr) {
+        res.status(404).send('Error in the SQL Request');
+        throw err;
+      }
+      console.log(sqlRes.message);
+    });
+
+    const sqlQuery1 = "INSERT IGNORE INTO playlists (playlistId, name, description, owner) VALUES ?";
+    connection.query(sqlQuery1, [array], (sqlErr, sqlRes) => {
+      if (sqlErr) {
+        res.status(404).send('Error in the SQL Request');
+        throw err;
+      }
+      console.log(sqlRes.message);
+    })
+  });
+  res.status(200).send({
+    body: count});
+});
+
 app.get('/callback/playlist/userId', ( req, res ) => {
   console.log('userId API was called');
   let count = + 1;

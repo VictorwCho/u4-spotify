@@ -32,6 +32,28 @@ function getUserId() {
     };
 };
 
+function addPlaylistToDatabase() {
+        const xhttp = new XMLHttpRequest();
+        const endpoint = '/callback/playlist/addplaylist';
+        xhttp.open('POST', endpoint, true);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        let params = [];
+        playlistDetails.forEach(element => 
+            params.push({
+            playlistId: element.playlistId,
+            name: element.name,
+            description: element.description,
+            owner: element.owner
+        }));
+        // console.log(params);
+        xhttp.send(JSON.stringify(params));
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                console.log(xhttp.response);
+            }
+    }
+}
+
 function getPlaylist() {
     const xhttp = new XMLHttpRequest();
     const endPoint = 'https://api.spotify.com/v1/me/playlists';
@@ -44,17 +66,19 @@ function getPlaylist() {
             let stuff = JSON.parse(response);
             const playlists = Object.entries(stuff.items);
             playlists.forEach(element => {
-                playlistDetails.push({
+                let pItem = {
                     playlistNumber: element[0],
                     playlistId: element[1].id,
                     name: element[1].name,
                     description: element[1].description,
                     owner: element[1].owner.display_name,
-                })
+                }
+                playlistDetails.push(pItem);
             });
             document.getElementById('playlist').innerHTML=`
             ${playlistDetails.map(playlistTemplate).join('')}
             `;
+            addPlaylistToDatabase();
         }
     }
 };
@@ -108,7 +132,9 @@ function createPlaylist() {
             const response = xhttp.response;
             console.log(response);
         }
+        location.reload();
     }
+
 };
 
 function deletePlaylist() {
