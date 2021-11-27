@@ -46,3 +46,38 @@ function searchArtist() {
     }
   };
 }
+
+// FIRST GET ARTISTS,
+// `https://api.spotify.com/v1/search?query=${artistName}&offset=0&limit=20&type=artist&market=US`
+
+// THEN GET ALBUMS FOR ARTIST,
+// `https://api.spotify.com/v1/artists/ARTIST_ID/albums?country=US&limit=5`
+
+// THEN GET TRACKS FROM ALBUM,
+// `https://api.spotify.com/v1/albums/ALBUM_ID/tracks?country=US&limit=5`
+
+// THEN ADD TRACKS TO PLAYLIST.
+// `https://api.spotify.com/v1/playlists/PLAYLIST_ID/tracks?uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M`
+
+function addToPlaylist() {
+  const access_token = localStorage.getItem('access_token');
+  const xhttp = new XMLHttpRequest();
+  const endPoint = `https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?country=US&limit=5`;
+
+  xhttp.open('GET', endPoint, true);
+
+  xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  xhttp.setRequestHeader('Accept', 'application/json');
+  xhttp.setRequestHeader('Authorization', `Bearer ${access_token}`);
+
+  xhttp.send();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const response = xhttp.response;
+      console.log(JSON.parse(response));
+      // console.log(JSON.parse(response));
+      // let objectSearched = JSON.parse(response);
+      // console.log(objectSearched.artists.items[0].name);
+    }
+  };
+}
