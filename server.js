@@ -58,7 +58,47 @@ app.post('/user', (req, res) => {
 });
 
 
-app.get('/callback/playlist/userId', ( req, res ) => {
+// adds playlist Ids into the database.
+app.post('/callback/playlists/addplaylist', (req, res) => {
+    let count = 1;
+    let body = '';
+  
+    req.on('data', function (chunk) {
+      if (chunk != null) {
+        body += chunk;
+      }
+    });
+  
+    req.on('end', function () {
+      let data = JSON.parse(body);
+      let array = [];
+      data.forEach(element => {
+        array.push(Object.values(element));
+      })
+  
+      const sqlQuery = 'CREATE TABLE IF NOT EXISTS playlists (playlistId VARCHAR(255), name VARCHAR(255), description VARCHAR(255), owner VARCHAR(255), UNIQUE (playlistId))';
+      connection.query(sqlQuery, (sqlErr, sqlRes) => {
+        if (sqlErr) {
+          res.status(404).send('Error in the SQL Request');
+          throw err;
+        }
+        console.log(sqlRes.message);
+      });
+  
+      const sqlQuery1 = "INSERT IGNORE INTO playlists (playlistId, name, description, owner) VALUES ?";
+      connection.query(sqlQuery1, [array], (sqlErr, sqlRes) => {
+        if (sqlErr) {
+          res.status(404).send('Error in the SQL Request');
+          throw err;
+        }
+        console.log(sqlRes.message);
+      })
+    });
+    res.status(200).send({
+      body: count});
+  });
+
+app.get('/callback/playlists/userId', ( req, res ) => {
     console.log('userId API was called');
     let count = + 1;
     connection.query('SELECT * FROM users', (err, result) => {
@@ -74,11 +114,9 @@ app.get('/callback/playlist/userId', ( req, res ) => {
     })
 });
 
-
 app.listen(PORT, (err) => {
     if (err) {
         throw err;
     }
     console.log('Listening on port', PORT);
 });
-

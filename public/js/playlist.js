@@ -18,7 +18,7 @@ function millisToMinutesAndSeconds(millis) {
   
 function getUserId() {
     const xhttp = new XMLHttpRequest();
-    const endpoint = '/callback/playlist/userId';
+    const endpoint = '/callback/playlists/userId';
     xhttp.open('GET', endPointRoot + endpoint, true);
     xhttp.send();
     xhttp.onreadystatechange = () => {
@@ -34,7 +34,7 @@ function getUserId() {
 
 function addPlaylistToDatabase() {
         const xhttp = new XMLHttpRequest();
-        const endpoint = '/callback/playlist/addplaylist';
+        const endpoint = '/callback/playlists/addplaylist';
         xhttp.open('POST', endpoint, true);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         let params = [];
