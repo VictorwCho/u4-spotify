@@ -3,21 +3,30 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="././css/artists.css" />
+        <link rel="stylesheet" href="../../css/artists.css" />
         <title>Spotify Web API</title>
     </head>
     <body>
     <div class="upper_centered">
         <div class="rounded_box2">
             <div class="inside_rounded_box2">
-                <div class="header_title"> 
+                <div class="header_title">
                     <h2> <u>Artists</u> </h2>
                 </div>
+                <input id="artist_search" placeholder="Enter Artists Name" type="text"/>
+                <br>
+                <button onclick='searchArtist()' id='artist_search_btn' class="btn btn-primary">Search</button>
             </div>
         </div>
     </div>
     <div class="right_upper_centered">
         <button class="button-42"> <b>Logout</b> </button>
     </div>
+    <div id="artist_container">
+
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="../../js/artists.js"></script>
+
     </body>
-</html>
