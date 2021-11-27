@@ -45,7 +45,6 @@ function addPlaylistToDatabase() {
             description: element.description,
             owner: element.owner
         }));
-        // console.log(params);
         xhttp.send(JSON.stringify(params));
         xhttp.onreadystatechange = () => {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -125,7 +124,6 @@ function createPlaylist() {
         description: document.getElementById('playlist-description').value,
         public: true
     }
-    console.log(body);
     xhttp.send(JSON.stringify(body));
     xhttp.onreadystatechange = () => {
         if ( xhttp.readyState == 4 && xhttp.status == 200 ) {

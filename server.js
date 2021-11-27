@@ -51,7 +51,7 @@ app.post('/user', (req, res) => {
 });
 
 
-// adds users into the database.
+// adds playlist Ids into the database.
 app.post('/callback/playlist/addplaylist', (req, res) => {
   let count = 1;
   let body = '';
@@ -59,21 +59,16 @@ app.post('/callback/playlist/addplaylist', (req, res) => {
   req.on('data', function (chunk) {
     if (chunk != null) {
       body += chunk;
-      console.log(body);
     }
   });
 
   req.on('end', function () {
     let data = JSON.parse(body);
-    // console.log(blah);
     let array = [];
     data.forEach(element => {
       array.push(Object.values(element));
     })
-    console.log(array);
 
-    // let bodyData = Object.entries(blah);
-    // console.log(bodyData);
     const sqlQuery = 'CREATE TABLE IF NOT EXISTS playlists (playlistId VARCHAR(255), name VARCHAR(255), description VARCHAR(255), owner VARCHAR(255), UNIQUE (playlistId))';
     connection.query(sqlQuery, (sqlErr, sqlRes) => {
       if (sqlErr) {
@@ -97,7 +92,6 @@ app.post('/callback/playlist/addplaylist', (req, res) => {
 });
 
 app.get('/callback/playlist/userId', ( req, res ) => {
-  console.log('userId API was called');
   let count = + 1;
   connection.query('SELECT * FROM users', (err, result) => {
     if (err) {
