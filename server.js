@@ -1,111 +1,31 @@
 const express = require('express');
-const mysql = require('mysql');
 const PORT = process.env.PORT || 8888;
 const app = express();
 const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
 
-
-//creates an sql conneciton
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'spotify',
-});
+/* Route paths */
+const users = require('./routes/users');
+const artists = require('./routes/artists');
+const genres = require('./routes/genres');
+const playlists = require('./routes/playlists');
+const songs = require('./routes/songs');
 
 // connects express and index.html.
 app.use(express.static(__dirname + '/public'))
-.use(cors())
+.use(cors());
 
-// adds users into the database.
-app.post('/user', (req, res) => {
-  let count = 1;
-  let body = '';
-
-  req.on('data', function (chunk) {
-    if (chunk != null) {
-      body += chunk;
-    }
-  });
-  req.on('end', function () {
-    const sqlQuery = 'CREATE TABLE IF NOT EXISTS users (display_name VARCHAR(255),email VARCHAR(255),id VARCHAR(255),type VARCHAR(255), UNIQUE (email))';
-    connection.query(sqlQuery, (sqlErr, sqlRes) => {
-      if (sqlErr) {
-        res.status(404).send('Error in the SQL Request');
-        throw err;
-      }
-      console.log(sqlRes.message);
-    });
-
-    const sqlQuery1 = `INSERT IGNORE INTO users (display_name, email, id, type) VALUES ('${JSON.parse(body).display_name}', '${JSON.parse(body).email}', '${JSON.parse(body).id}', '${JSON.parse(body).type}')`;
-    connection.query(sqlQuery1, (sqlErr, sqlRes) => {
-      if (sqlErr) {
-        res.status(404).send('Error in the SQL Request');
-        throw err;
-      }
-      console.log(sqlRes.message);
-    })
-  });
-  res.status(200).send({
-    body: count});
+app.get("/", (req, res) => {
+  res.send("Connected!");
 });
 
-
-// adds playlist Ids into the database.
-app.post('/callback/playlist/addplaylist', (req, res) => {
-  let count = 1;
-  let body = '';
-
-  req.on('data', function (chunk) {
-    if (chunk != null) {
-      body += chunk;
-    }
-  });
-
-  req.on('end', function () {
-    let data = JSON.parse(body);
-    let array = [];
-    data.forEach(element => {
-      array.push(Object.values(element));
-    })
-
-    const sqlQuery = 'CREATE TABLE IF NOT EXISTS playlists (playlistId VARCHAR(255), name VARCHAR(255), description VARCHAR(255), owner VARCHAR(255), UNIQUE (playlistId))';
-    connection.query(sqlQuery, (sqlErr, sqlRes) => {
-      if (sqlErr) {
-        res.status(404).send('Error in the SQL Request');
-        throw err;
-      }
-      console.log(sqlRes.message);
-    });
-
-    const sqlQuery1 = "INSERT IGNORE INTO playlists (playlistId, name, description, owner) VALUES ?";
-    connection.query(sqlQuery1, [array], (sqlErr, sqlRes) => {
-      if (sqlErr) {
-        res.status(404).send('Error in the SQL Request');
-        throw err;
-      }
-      console.log(sqlRes.message);
-    })
-  });
-  res.status(200).send({
-    body: count});
-});
-
-app.get('/callback/playlist/userId', ( req, res ) => {
-  let count = + 1;
-  connection.query('SELECT * FROM users', (err, result) => {
-    if (err) {
-      res.status(404).send('Error in request');
-      throw err;
-    }
-    const body = {
-      count: count,
-      result: result[0].id,
-    }
-    res.status(200).send(body);
-  })
-});
-
+/* Routes */
+app.use("/users", users);
+// app.use("/artists", artists);
+// app.use("/genres", genres);
+// app.use("/playlists", playlists);
+// app.use("/songs", songs);
 
 app.listen(PORT, (err) => {
     if (err) {
