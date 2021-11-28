@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" onload="getTopItems()">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../../css/recentlyplayed.css" />
+        <!-- <link rel="stylesheet" href="../../css/recentlyplayed.css" /> -->
         <title>Spotify Web API</title>
     </head>
-    <body>
+    <body >
     <div class="upper_centered">
         <div class="rounded_box2">
             <div class="inside_rounded_box2">
@@ -18,20 +18,20 @@
     </div>
     <div class="mid_centered">
         <div class="selected-option">
-            <select class="type-options">
-                <option value="Artist">Artist</option>
-                <option value="Track">Track</option>
+            <select id="type-options" onchange="update_button()">
+                <option value="artists" selected="selected">artist</option>
+                <option value="tracks">track</option>
             </select>
     </div>
-    <div name="get_button">
-
+        <button id="option_button" class="button-42" onclick="getTopArtists()"></button>
     </div>
+    <div id="artist_container">
 
     </div>
     <div class="right_upper_centered">
         <button class="button-42"> <b>Logout</b> </button>
     </div>
     </body>
-    <script src="./js/recentlyplayed.js"></script>
-    <script src="./js/logout.js"></script>
+    <script src='../../js/recentlyplayed.js'></script>
+    <script src="../../js/logout.js"></script>
 </html>
