@@ -1,9 +1,12 @@
 .upper_centered {
-    position: fixed;
-    top: 10%;
-    left: 45%;
-    margin-top: -50px;
-    margin-left: -100px;
+    position: absolute;
+    top: 10;
+    left: 25%;
+    right: 25%;
+    /* margin-left: 50%;
+    margin-right: 50%; */
+    /* margin-top: -50px;
+    margin-left: -50px; */
 }
 
 .right_upper_centered {
@@ -18,7 +21,6 @@
     border-radius: 25px;
     background: #63D75F;
     padding: 20px;
-    width: 330px;
     height: 100px;
 }
 
@@ -26,13 +28,12 @@
     border-radius: 25px;
     background: #ffffff;
     padding: 10px 10px 10px 10px;
-    width: 306px;
     height: 75px;
 }
 
 html {
     background-color: #3E3E3E;
-}
+} 
 
 .button-42 {
     background-color: initial;
@@ -43,7 +44,6 @@ html {
     cursor: pointer;
     display: inline-block;
     font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
-    height: 44px;
     line-height: 44px;
     outline: 0;
     overflow: hidden;
@@ -70,5 +70,57 @@ html {
         "Helvetica Neue",
         Arial,
         sans-serif;
-    padding-left: 115px;
+}
+
+#title {
+    display:flex;
+    justify-content: center;
+}
+
+.playlist-name {
+    margin: 2px auto;
+    justify-content: center;
+}
+
+#playlist-description {
+    margin: 2px auto;
+    justify-content: center;
+}
+
+.playlist-add {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.playlist-button {
+    margin: 2px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.playlist-card {
+    padding: 20px;
+    margin: 30px auto;
+    background-color: #fff;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 20px;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+.playlist-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+    transform: translate3d(0px, -5px, 0px);
+}
+
+.playlist-track {
+    padding-left: 20px;
+    background-color: #fff;
+}
+
+.playlist-track p {
+      padding-left: 20px;
 }
