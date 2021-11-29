@@ -74,7 +74,7 @@ app.post('/callback/playlists/addplaylist', (req, res) => {
       let array = [];
       data.forEach(element => {
         array.push(Object.values(element));
-      })
+      });
   
       const sqlQuery = 'CREATE TABLE IF NOT EXISTS playlists (playlistId VARCHAR(255), name VARCHAR(255), description VARCHAR(255), owner VARCHAR(255), UNIQUE (playlistId))';
       connection.query(sqlQuery, (sqlErr, sqlRes) => {

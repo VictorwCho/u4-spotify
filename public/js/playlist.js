@@ -14,7 +14,7 @@ function millisToMinutesAndSeconds(millis) {
     let minutes = Math.floor(millis / 60000);
     let seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-  }
+}
   
 function getUserId() {
     const xhttp = new XMLHttpRequest();
@@ -29,7 +29,7 @@ function getUserId() {
             requestIncrement.get = parseResponse.count;
             console.log(id, requestIncrement.get);
         }
-    };
+    }
 };
 
 function addPlaylistToDatabase() {
@@ -51,7 +51,7 @@ function addPlaylistToDatabase() {
                 console.log(xhttp.response);
             }
     }
-}
+};
 
 function getPlaylist() {
     const xhttp = new XMLHttpRequest();
@@ -132,7 +132,6 @@ function createPlaylist() {
         }
         location.reload();
     }
-
 };
 
 function deletePlaylist() {
@@ -164,7 +163,6 @@ function deletePlaylist() {
             return;
         }
     });
-
 };
 
 function playlistTemplate(playlist) {
@@ -195,7 +193,7 @@ function playlistItem(trackItem) {
         <p>Explicit: ${trackItem.explicit}</p>
     </div>
     `
-}
+};
 
 getUserId();
 getPlaylist();
