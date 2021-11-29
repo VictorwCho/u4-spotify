@@ -116,9 +116,9 @@
         "tags": [
           "artist"
         ],
-        "summary": "Add an artist",
+        "summary": "Add tracks to playlist from top 5 albums",
         "description": "This can only be done by the logged in user.",
-        "operationId": "addArtist",
+        "operationId": "addToPlaylist",
         "produces": [
           "application/json",
           "application/xml"
@@ -127,7 +127,97 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Add artist object",
+            "description": "Add tracks object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/artist/getTop5AlbumTracks": {
+      "get": {
+        "tags": [
+          "artist"
+        ],
+        "summary": "Get top 5 tracks from album",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "getTop5AlbumTracks",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Get tracks",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/artist/getAlbums": {
+      "get": {
+        "tags": [
+          "artist"
+        ],
+        "summary": "Get top 5 albums from artist",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "getAlbums",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Get albums",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/artist/searchArtist": {
+      "get": {
+        "tags": [
+          "artist"
+        ],
+        "summary": "Get top most relevant artist for search",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "searchArtist",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Get artist",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Artist"
@@ -158,6 +248,186 @@
             "in": "body",
             "name": "body",
             "description": "Add playList object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayList"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/playList/getUserId": {
+      "get": {
+        "tags": [
+          "playList"
+        ],
+        "summary": "Gets the Users ID",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "getUserId",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Get User ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayList"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/playList/addPlaylistToDatabase": {
+      "post": {
+        "tags": [
+          "playList"
+        ],
+        "summary": "Adds playlist to DB",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "addPlaylistToDatabase",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Adds playlist to database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayList"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/playList/getPlaylist": {
+      "get": {
+        "tags": [
+          "playList"
+        ],
+        "summary": "gets the playlist",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "getPlaylist",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "gets the playlist from the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayList"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/playList/getTracks": {
+      "get": {
+        "tags": [
+          "playList"
+        ],
+        "summary": "gets the tracks from the playlist",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "getTracks",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "gets the tracks from the playlist from the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayList"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/playList/createPlaylist": {
+      "post": {
+        "tags": [
+          "playList"
+        ],
+        "summary": "creates the playlist",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createPlaylist",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "creates a new playlist in the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayList"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/playList/deletePlaylist": {
+      "delete": {
+        "tags": [
+          "playList"
+        ],
+        "summary": "deletes the playlist",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "deletePlaylist",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "deletes a playlist in the database",
             "required": true,
             "schema": {
               "$ref": "#/definitions/PlayList"
@@ -477,15 +747,16 @@
           "type": "integer",
           "format": "int64"
         },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
+        "Name": {
           "type": "string"
         },
         "artistsGenre": {
           "type": "string",
           "description": "Artists Genre"
+        },
+        "track duration": {
+          "type": "string",
+          "description": "length of song"
         }
       },
       "xml": {
