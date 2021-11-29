@@ -26,8 +26,9 @@ function getTracks() {
             let trackList = [];
             tracks.forEach(track => {
                 let trackInfo = {
-                    title: track[1].album.name,
+                    title: track[1].name,
                     artist: track[1].album.artists[0].name,
+                    album: track[1].album.name,
                     duration: track[1].duration_ms,
                     releaseDate: track[1].album.release_date,
                     trackUrl: track[1].external_urls.spotify,
@@ -50,6 +51,7 @@ function songsTemplate(trackInfo){
         <div id='tracks_holder' class="tracks_holder">
             <h4>Title: ${trackInfo.title}</h4>
             <h4>Artist: ${trackInfo.artist}</h4>
+            <h4>Album: ${trackInfo.album}</h4>
             <h4>Duration: ${millisToMinutesAndSeconds(trackInfo.duration)}</h4>
             <h4>Release Date: ${trackInfo.releaseDate}</h4>
             <h4>Track URL: <a href="${trackInfo.trackUrl}">${trackInfo.trackUrl}</a></h4>
