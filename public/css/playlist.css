@@ -11,7 +11,7 @@ body {
     margin: 0;
   }
 
-.playlist-name {
+.song-name {
     margin: 2px auto;
     justify-content: center;
 }
@@ -27,7 +27,7 @@ body {
     justify-content: space-around;
 }
 
-.playlist-button {
+.search-song-button {
     margin: 2px auto;
     display: flex;
     justify-content: center;

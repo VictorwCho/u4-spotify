@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Playlist</title>
-        <link rel="stylesheet" href="./playlists.css" />
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playlist</title>
+    <link rel="stylesheet" href="./playlists.css" />
+</head>
+<body>
 
 
-    <div class="upper_centered">
-        <div class="rounded_box2">
-            <div class="inside_rounded_box2">
-                <div class="header_title"> 
+<div class="upper_centered">
+    <div class="rounded_box2">
+        <div class="inside_rounded_box2">
+            <div class="header_title">
 
-                    <h1 id='title'>Playlists</h1>
-                    <div class='playlist-add'>
-                        <h4 class='playlist-name'>Add Playlist</h4>
-                        <input id='playlist-name' class='playlist-name' type='text' placeholder="Playlist Name"></input>
-                        <input id='playlist-description' type='text' placeholder="Play List Description"></input>
-                    </div>
-                    <div class='playlist-button'>
-                        <button onclick='createPlaylist()'>Create playlist</button>
-                    </div>
-                
-                    <div id='playlist'>
-                
-                    </div>
+                <h1 id='title'>Playlists</h1>
+                <div class='playlist-add'>
+                    <h4 class='playlist-name'>Add Playlist</h4>
+                    <input id='playlist-name' class='playlist-name' type='text' placeholder="Playlist Name"></input>
+                    <input id='playlist-description' type='text' placeholder="Play List Description"></input>
+                </div>
+                <div class='playlist-button'>
+                    <button onclick='createPlaylist()'>Create playlist</button>
+                </div>
+
+                <div id='playlist'>
 
                 </div>
+
             </div>
         </div>
     </div>
-    <div class="right_upper_centered">
-        <button onClick='logout()' class="button-42"> <b>Logout</b> </button>
-    </div>
-    </body>
-    <script src='../../js/playlist.js'></script>
-    <!-- <script src='../../js/authcheck.js'></script> -->
-    <script src='../../js/logout.js'></script>
+</div>
+<div class="right_upper_centered">
+    <button onClick='logout()' class="button-42"> <b>Logout</b> </button>
+</div>
+</body>
+<script src='../../js/playlist.js'></script>
+<!-- <script src='../../js/authcheck.js'></script> -->
+<script src='../../js/logout.js'></script>
 </html>
