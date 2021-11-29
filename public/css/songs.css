@@ -1,7 +1,7 @@
 .upper_centered {
     position: absolute;
-    top: 10%;
-    left: 50%;
+    top: 20%;
+    left: 20%;
     margin-top: -50px;
     margin-left: -50px;
 }
@@ -30,6 +30,21 @@
 
 html {
     background-color: #3E3E3E;
+}
+
+#songs_container {
+    justify-content: center;
+    margin-top: 15%;
+    color: black;
+    width: 1200px;
+    overflow-x: hidden;
+    font-family: Inter,
+        -apple-system,
+        system-ui,
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        sans-serif;
 }
 
 #title {
@@ -75,7 +90,6 @@ html {
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
     color: black;
     cursor: pointer;
-    display: inline-block;
     outline: 0;
     overflow: hidden;
     padding: 0 20px;

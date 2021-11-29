@@ -1,9 +1,12 @@
 .upper_centered {
     position: absolute;
-    top: 10%;
-    left: 45%;
-    margin-top: -50px;
-    margin-left: -50px;
+    top: 10;
+    left: 25%;
+    right: 25%;
+    /* margin-left: 50%;
+    margin-right: 50%; */
+    /* margin-top: -50px;
+    margin-left: -50px; */
 }
 
 .right_upper_centered {

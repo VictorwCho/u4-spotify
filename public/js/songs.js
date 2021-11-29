@@ -1,7 +1,6 @@
 const endPointRoot = 'http://localhost:8888';
 const access_token = localStorage.getItem('access_token');
 const user_id = "8vnif1sopntbz8ples7srgx88";
-const trackName = document.getElementById("song-name").value;
 
 function millisToMinutesAndSeconds(millis) {
     let minutes = Math.floor(millis / 60000);
@@ -10,6 +9,7 @@ function millisToMinutesAndSeconds(millis) {
 }
 
 function getTracks() {
+    let trackName = document.getElementById("song-name").value;
     const endPoint =
         `https://api.spotify.com/v1/search?query=${trackName}&offset=0&limit=20&type=track&market=US`;
     const xhttp = new XMLHttpRequest();
@@ -35,18 +35,14 @@ function getTracks() {
                 };
                 console.log(trackInfo.length);
                 trackList.push(trackInfo);
-
             });
             document.getElementById('songs_container').innerHTML=`
             ${trackList.map(songsTemplate)}
             `;
             console.log(trackList);
-
-
         }
     }
 }
-
 
 function songsTemplate(trackInfo){
     console.log(trackInfo);
