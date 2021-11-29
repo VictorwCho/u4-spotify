@@ -1,5 +1,5 @@
 .upper_centered {
-    position: fixed;
+    position: absolute;
     top: 10%;
     left: 45%;
     margin-top: -50px;
@@ -18,7 +18,7 @@
 
     background: #63d75f;
     padding: 20px;
-    width: 1000px;
+    width: 70%;
     border-radius: 25px;
 }
 
@@ -121,8 +121,6 @@ option{
     margin-top: 15%;
     margin-left: 28%;
     color: black;
-    overflow-y: scroll;
-    height:1000px;
     width: 1200px;
     overflow-x: hidden;
     font-family: Inter,
