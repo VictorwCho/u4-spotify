@@ -1,9 +1,9 @@
 .upper_centered {
-    position: fixed;
+    position: absolute;
     top: 10%;
-    left: 45%;
+    left: 50%;
     margin-top: -50px;
-    margin-left: -100px;
+    margin-left: -50px;
 }
 
 .right_upper_centered {
@@ -18,7 +18,6 @@
     border-radius: 25px;
     background: #63D75F;
     padding: 20px;
-    width: 330px;
     height: 100px;
 }
 
@@ -26,7 +25,6 @@
     border-radius: 25px;
     background: #ffffff;
     padding: 10px 10px 10px 10px;
-    width: 306px;
     height: 75px;
 }
 
@@ -34,16 +32,21 @@ html {
     background-color: #3E3E3E;
 }
 
+#title {
+    display:flex;
+    justify-content: center;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 .button-42 {
     background-color: initial;
     background-image: linear-gradient(-180deg, #63D75F, rgb(72, 161, 45));
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
-    color: black;
+    color: white;
     cursor: pointer;
     display: inline-block;
     font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
-    height: 44px;
     line-height: 44px;
     outline: 0;
     overflow: hidden;
@@ -61,14 +64,38 @@ html {
     border: 0;
 }
 
+#anchors {
+    color: rgb(13, 220, 235);
+}
 
-.header_title {
+#tracks_holder {
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #63D75F, rgb(72, 161, 45));
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 1200px;
+    z-index: 9;
+    border: 0;
+    text-align: center;
+    position: static;
+    justify-content: center;
     font-family: Inter,
-        -apple-system,
-        system-ui,
-        Roboto,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-    padding-left: 115px;
+    -apple-system,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
 }
