@@ -14,7 +14,7 @@
     margin-left: -100px;
 }
 
-.top_listing {
+.top_listing{
 
     background: #63d75f;
     padding: 20px;
@@ -22,10 +22,11 @@
     border-radius: 25px;
 }
 
+
 .centered {
     position: fixed;
     top: 20%;
-    left: 40%;
+    left: 20%;
     margin-top: -50px;
     margin-left: -100px;
 }
@@ -33,9 +34,22 @@
 .right_upper_centered {
     position: fixed;
     top: 10%;
-    left: 97%;
+    left: 80%;
     margin-top: -50px;
     margin-left: -100px;
+}
+
+#type-options{
+    width: 170px;
+    height: 50px;
+    font-family: Inter,
+    -apple-system,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+
 }
 
 .rounded_box2 {
@@ -90,14 +104,25 @@ html {
     padding-left: 60px;
 }
 
-#artist_container {
+option{
+        font-family: Inter,
+        -apple-system,
+        system-ui,
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        sans-serif;
+    font-size: medium;
+}
+
+#top_container {
     position: static;
     justify-content: center;
     margin-top: 15%;
     margin-left: 28%;
     color: black;
     overflow-y: scroll;
-    height: 1000px;
+    height:1000px;
     width: 1200px;
     overflow-x: hidden;
     font-family: Inter,
@@ -109,12 +134,13 @@ html {
         sans-serif;
 }
 
-.name_title {
-    margin-left: 30%;
+
+.name_title{
+        margin-left: 30%;
 }
 
-.center_image {
-    margin-left: 15%;
+.center_image{
+        margin-left: 15%;
 }
 
 #green {
