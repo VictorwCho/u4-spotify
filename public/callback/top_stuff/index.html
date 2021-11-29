@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../css/top_stuff.css" />
+        <title>Spotify Web API</title>
+    </head>
+    <body >
+    <div class="upper_centered">
+        <div class="rounded_box2">
+            <div class="inside_rounded_box2">
+                <div class="header_title"> 
+                    <h2> <u>Recently Played</u> </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right_upper_centered">
+        <div class="selected-option">
+            <select id="type-options" onchange="update_button()">
+                <option value="type" selected="selected">--Please select a type--</option>
+                <option value="artists">artist</option>
+                <option value="tracks">track</option>
+            </select>
+    </div>
+        <button id="option_button" class="button-42" onclick="getTopArtists()"> </button>
+    </div>
+
+    <div name="centered">
+        <div id="artist_container">
+            
+        </div>
+    </div>
+    </body>
+    <script src='../../js/top_stuff.js'></script>
+    <script src="../../js/logout.js"></script>
+</html>
