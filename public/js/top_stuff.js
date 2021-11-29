@@ -120,7 +120,7 @@ function trackTemplate(top_tracks){
             <h2>Track Duration: ${millisToMinutesAndSeconds(top_tracks.top_tracks_duration_ms)}
             <h2>Album Cover: </h4>
             <div>
-                <img src="${top_tracks.top_artist_image[0].url}">
+                <img class='center_image' src="${top_tracks.top_artist_image[0].url}">
             </div>
         </div>
     `
