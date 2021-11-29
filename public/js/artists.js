@@ -105,7 +105,7 @@ async function getTop5AlbumTracks(access_token, albumId) {
 // `https://api.spotify.com/v1/playlists/8vnif1sopntbz8ples7srgx88/tracks?uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M`
 
 async function addToPlaylist(access_token, tracks) {
-  const url = `https://api.spotify.com/v1/playlists/3dRZd09p8aOE8FPLvYUVlF/tracks`;
+  const url = `https://api.spotify.com/v1/playlists/0d9WKp1JhbkKmyB2UTNmiJ/tracks`;
 
   const requestConfig = {
     headers: {

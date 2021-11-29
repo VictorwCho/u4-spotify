@@ -175,6 +175,7 @@ function playlistTemplate(playlist) {
                 <h4>Name: ${playlist.name}</h4>
                 <h4>Description: ${playlist.description}</h4>
                 <h4>Owner: ${playlist.owner}</h4>
+                <h4>ID: ${playlist.playlistId}</h4>
             <div id='${playlist.playlistId}' data-value='${playlist.playlistId}'>
                 <div id='track-item'>
                 </div>
