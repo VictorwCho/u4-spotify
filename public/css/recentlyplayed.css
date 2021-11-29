@@ -6,10 +6,26 @@
     margin-left: -100px;
 }
 
-.mid_centered{
+.mid_centered {
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
+
+.top_listing{
+
+    background: #63d75f;
+    padding: 20px;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 25px;
+}
+.centered {
     position: fixed;
     top: 20%;
-    left: 10%;
+    left: 40%;
     margin-top: -50px;
     margin-left: -100px;
 }
@@ -24,7 +40,7 @@
 
 .rounded_box2 {
     border-radius: 25px;
-    background: #63D75F;
+    background: #63d75f;
     padding: 20px;
     width: 330px;
     height: 100px;
@@ -39,18 +55,18 @@
 }
 
 html {
-    background-color: #3E3E3E;
+    background-color: #3e3e3e;
 }
 
 .button-42 {
     background-color: initial;
-    background-image: linear-gradient(-180deg, #63D75F, rgb(72, 161, 45));
+    background-image: linear-gradient(-180deg, #63d75f, rgb(72, 161, 45));
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
     color: black;
     cursor: pointer;
     display: inline-block;
-    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: Inter, -apple-system, system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
     height: 44px;
     line-height: 44px;
     outline: 0;
@@ -69,14 +85,38 @@ html {
     border: 0;
 }
 
-
 .header_title {
+    font-family: Inter, -apple-system, system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
+    padding-left: 60px;
+}
+
+#artist_container {
+    position: static;
+    justify-content: center;
+    margin-top: 15%;
+    margin-left: 28%;
+    color: white;
+    overflow-y: scroll;
+    height:1000px;
+    width: 1200px;
+    overflow-x: hidden;
     font-family: Inter,
         -apple-system,
         system-ui,
         Roboto,
-        "Helvetica Neue",
+        'Helvetica Neue',
         Arial,
         sans-serif;
-    padding-left: 115px;
+}
+
+#green {
+    color: greenyellow;
+}
+
+#white {
+    color: white;
+}
+
+#anchors {
+    color: rgb(13, 220, 235);
 }
