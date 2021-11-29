@@ -33,12 +33,12 @@
       "description": "Operations about playList"
     },
     {
-      "name": "genre",
-      "description": "Operations about genre"
+      "name": "songs",
+      "description": "Operations about songs"
     },
     {
-      "name": "album",
-      "description": "Operations about album"
+      "name": "top_stuff",
+      "description": "Operations about Top Items"
     },
     {
       "name": "user",
@@ -441,14 +441,14 @@
         }
       }
     },
-    "/genre": {
+    "/songs": {
       "post": {
         "tags": [
-          "genre"
+          "songs"
         ],
-        "summary": "Add an genre",
+        "summary": "Add an song",
         "description": "This can only be done by the logged in user.",
-        "operationId": "addGenre",
+        "operationId": "addSong",
         "produces": [
           "application/json",
           "application/xml"
@@ -457,10 +457,10 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Add genre object",
+            "description": "Add song object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Genre"
+              "$ref": "#/definitions/Songs"
             }
           }
         ],
@@ -471,14 +471,14 @@
         }
       }
     },
-    "/album": {
-      "post": {
+    "/top_stuff/getTopArtists": {
+      "get": {
         "tags": [
-          "album"
+          "top_stuff"
         ],
-        "summary": "Add an album",
+        "summary": "get top artist",
         "description": "This can only be done by the logged in user.",
-        "operationId": "addAlbum",
+        "operationId": "getTopArtists",
         "produces": [
           "application/json",
           "application/xml"
@@ -490,7 +490,7 @@
             "description": "Add album object",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Album"
+              "$ref": "#/definitions/top_stuff"
             }
           }
         ],
@@ -778,7 +778,7 @@
         "name": "PlayList"
       }
     },
-    "Genre": {
+    "Songs": {
       "type": "object",
       "properties": {
         "id": {
@@ -792,7 +792,7 @@
         "name": "Genre"
       }
     },
-    "Album": {
+    "top_stuff": {
       "type": "object",
       "properties": {
         "id": {
